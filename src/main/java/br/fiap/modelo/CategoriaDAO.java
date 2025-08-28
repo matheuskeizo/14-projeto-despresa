@@ -15,12 +15,12 @@ public class CategoriaDAO {
     private String sql;
 
     public void inserir(Categoria categoria){
-        sql = "insert INTO java_categoria values (?, ?)";
+        sql = "insert INTO java_categoria values (seqc.nextval, ?)";
 
         try(Connection connection = Conexao.conectar()){
             ps = connection.prepareStatement(sql);
-            ps.setLong(1,categoria.getId());
-            ps.setString(2,categoria.getCategoria());
+//            ps.setLong(1,categoria.getId());
+            ps.setString(1,categoria.getCategoria());
             ps.execute();
         }
         catch (SQLException e){
